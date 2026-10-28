@@ -1,23 +1,10 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>Redirecting...</title>
-    <script type="text/javascript">
-      // This script takes the current URL pathname and converts it into a query parameter,
-      // then redirects the browser back to the root index.html file.
-      var l = window.location;
-      l.replace(
-        l.protocol +
-          "//" +
-          l.hostname +
-          (l.port ? ":" + l.port : "") +
-          l.pathname.split("/").slice(0, 1).join("/") +
-          "/?p=" +
-          l.pathname.slice(1, l.pathname.length).replace(/&/g, "~and~") +
-          (l.search ? "&q=" + l.search.slice(1).replace(/&/g, "~and~") : "") +
-          l.hash,
-      );
+    <script>
+      // Grab the exact subpage path name and save it, then bounce home
+      sessionStorage.setItem("spa_redirect", window.location.pathname);
+      window.location.replace(window.location.origin);
     </script>
   </head>
   <body></body>
